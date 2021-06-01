@@ -1,0 +1,47 @@
+<div class="mat-typography app-frame mat-app-background">
+
+  <mat-toolbar *ngIf="getId() == null" color="primary">
+    <span routerLink="login" class="home-link">SubsAdmin</span>
+  </mat-toolbar>
+  
+  <mat-toolbar *ngIf="getId() != null" color="primary">
+
+    <div fxShow="true" fxHide.gt-xs="true">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+      
+    <span routerLink="/users/{{getId()}}" class="home-link">SubsAdmin</span>
+  
+    <span class="fill-remaining-space"></span>
+
+    <span fxShow="true" fxHide.gt-xs="true">{{getUsername()}}</span>
+
+    <div fxShow="true" fxHide.xs="true">
+      <button *ngIf="getRole() == 'admin'" mat-flat-button style="margin-left: 20px;" routerLink="admin">Admin</button>
+      <button mat-flat-button style="margin-left: 20px;" routerLink="create">Add Note</button>
+      <mat-select style="margin-left: 20px; width: 200px;" placeholder="{{getUsername()}}">
+        <mat-option (click)="navigateTo('options')">Options</mat-option>
+        <mat-option (click)="logout()">Logout</mat-option>
+      </mat-select>
+    </div>
+
+    
+
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill class="example-container">
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-xs="true">
+      <div fxLayout="column">
+        <a mat-button *ngIf="getRole() == 'admin'" routerLink="admin">Admin</a>
+        <a mat-button routerLink="create">Add Note</a>
+        <a mat-button routerLink="options">Options</a>
+        <a mat-button (click)="logout()">Logout</a>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+</div>

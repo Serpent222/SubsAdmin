@@ -1,0 +1,140 @@
+<!-- <form [formGroup]="form">
+    <div class="container">
+        <mat-card class="card">
+            
+            <mat-form-field>
+                <input type="color" matInput placeholder="Background Color" formControlName="background_color">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="Font Color" formControlName="font_color">
+                    <mat-option *ngFor="let item of fontColors" [value]="item">{{item}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="Icon" formControlName="icon">
+                    <mat-option *ngFor="let item of icons" [value]="item">{{item}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <input matInput placeholder="Title" formControlName="title">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input type="number" matInput placeholder="Price" formControlName="price">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="Billing Cycle" formControlName="billing_cycle">
+                    <mat-option *ngFor="let item of billingCycles" [value]="item">{{item}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Date</mat-label>
+                <input matInput formControlName="billing_date" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <textarea matInput placeholder="Description" formControlName="description" style="height: 100px;"></textarea>
+            </mat-form-field>  
+            
+            <button mat-flat-button color="primary" [disabled]="!form.valid" type="submit" (click)="update()">Update</button>
+            <button style="margin-left: 10px;" mat-flat-button color="primary" type="submit" (click)="delete()">Delete</button>
+        </mat-card>
+    </div>
+</form>
+
+<div fxShow="true" fxHide.xs="true" class="container">
+    <mat-card style="background-color: {{form.get('background_color').value}}; color: {{form.get('font_color').value}}" class="card">
+        <div style="display: flex;">
+            <div style="margin-left:30px; width: 100%;">
+                <div class="row">
+                    <div mat-card-avatar *ngIf="form.get('font_color').value == 'white' && form.get('icon').value != null"><img src="https://unpkg.com/simple-icons@v4/icons/{{form.get('icon').value}}.svg" style="filter: invert(1);"></div>
+                    <div mat-card-avatar *ngIf="form.get('font_color').value == 'black' && form.get('icon').value != null"><img src="https://unpkg.com/simple-icons@v4/icons/{{form.get('icon').value}}.svg"></div>
+                    <h1 class="title">{{form.get('title').value}}</h1>
+                </div>
+                <br>
+                <div class="row">
+                    <span class="text" *ngIf="form.get('price').value != null">Price: <b>{{form.get('price').value | currency}}</b></span>
+                    <span class="text" *ngIf="form.get('billing_cycle').value != null">Billing cycle: <b>{{form.get('billing_cycle').value}}</b></span>
+                    <span class="text" *ngIf="form.get('billing_date').value != null">Billing date: <b>{{form.get('billing_date').value | date}}</b></span>
+                </div>
+                <br  *ngIf="form.get('description').value != null">
+                <p>{{form.get('description').value}}</p>
+            </div>
+        </div>
+    </mat-card>
+</div>
+
+<div fxShow="true" fxHide.gt-xs="true" class="container">
+    <mat-card style="background-color: {{form.get('background_color').value}}; color: {{form.get('font_color').value}}" class="card">
+        <div style="display: flex;">
+            <div style="margin-left:10px; width: 100%;">
+                <div class="row">
+                    <div mat-card-avatar *ngIf="form.get('font_color').value == 'white' && form.get('icon').value != null"><img src="https://unpkg.com/simple-icons@v4/icons/{{form.get('icon').value}}.svg" style="filter: invert(1);"></div>
+                    <div mat-card-avatar *ngIf="form.get('font_color').value == 'black' && form.get('icon').value != null"><img src="https://unpkg.com/simple-icons@v4/icons/{{form.get('icon').value}}.svg"></div>
+                    <h1 class="title">{{form.get('title').value}}</h1>
+                </div>
+                <br>
+                <div class="row">
+                    <span class="text" *ngIf="form.get('price').value != null">Price: <b>{{form.get('price').value | currency}}</b></span>
+                </div>
+                <div class="row">
+                    <span class="text" *ngIf="form.get('billing_cycle').value != null">Billing cycle: <b>{{form.get('billing_cycle').value}}</b></span>
+                </div>
+                <div class="row">
+                    <span class="text" *ngIf="form.get('billing_date').value != null">Billing date: <b>{{form.get('billing_date').value | date}}</b></span>
+                </div>
+                <br  *ngIf="form.get('description').value != null">
+                <p>{{form.get('description').value}}</p>
+            </div>
+        </div>
+    </mat-card>
+</div> -->
+
+<div class="container">
+    <mat-card style="background-color: {{form.get('background_color').value}}; color: {{form.get('font_color').value}}" class="card">
+            <div style=" width: 100%;">
+
+                <h1>{{form.get('title').value}}</h1>
+                
+                <div *ngIf="form.get('text').value != null">
+                    <br>
+                    <p>{{form.get('text').value}}</p>
+                </div>
+            </div>
+    </mat-card>
+</div>
+
+<form [formGroup]="form">
+    <div class="container">
+        <mat-card class="card">
+            
+            <mat-form-field>
+                <input matInput placeholder="Title" formControlName="title">
+            </mat-form-field>
+
+            <mat-form-field>
+                <textarea matInput placeholder="Text" formControlName="text" style="height: 100px;"></textarea>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="Font Color" formControlName="font_color">
+                    <mat-option *ngFor="let item of fontColors" [value]="item">{{item}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input type="color" matInput placeholder="Background Color" formControlName="background_color">
+            </mat-form-field>
+            
+            <button mat-flat-button color="primary" [disabled]="!form.valid" type="submit" (click)="update()">Update</button>
+            <button style="margin-left: 10px;" mat-flat-button color="primary" type="submit" (click)="delete()">Delete</button>
+        </mat-card>
+    </div>
+</form>

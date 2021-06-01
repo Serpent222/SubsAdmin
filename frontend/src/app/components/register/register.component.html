@@ -1,0 +1,38 @@
+<div class="container">
+    <mat-card class="card">
+<h1 style="text-align: center;">Register</h1>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+            <mat-form-field>
+                <input matInput type="text" placeholder="Username" formControlName="username">
+                <mat-error *ngIf="registerForm.get('username').hasError('required')">Username is required</mat-error>
+                <mat-error *ngIf="registerForm.get('username').hasError('minlength')">Password must contain at least 3 characters</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="password" placeholder="Password" formControlName="password"> 
+                <mat-error *ngIf="registerForm.get('password').hasError('required')">Password is required</mat-error>
+                <mat-error *ngIf="registerForm.get('password').hasError('minlength')">Password must contain at least 8 characters</mat-error>
+                <mat-error *ngIf="registerForm.get('password').hasError('invalidPassword')">Password must contain at least 1 number</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="password" placeholder="Repeat password" formControlName="confirmPassword">
+                <mat-error *ngIf="registerForm.hasError('passwordsNotMatching')">Password not matching</mat-error>
+            </mat-form-field>
+
+            <br><br>
+            <button mat-flat-button color="primary" [disabled]="!registerForm.valid" type="submit">Register</button>
+
+        </form>
+        <br>
+        <div [hidden]="!invalid">
+            <mat-error>Username already exists</mat-error>
+        </div>
+    </mat-card>
+</div>
+<a style="text-align: left;" routerLink="../login">Login</a>
+
+
+
+

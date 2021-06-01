@@ -1,0 +1,5 @@
+<div *ngIf="(user$ | async) as user" class="main-div">
+    <mat-card class="card">
+        <app-all-notes [notes] ="(notes$ | async)" (paginate)="onPaginateChange($event)"></app-all-notes>
+    </mat-card>
+</div>

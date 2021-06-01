@@ -1,0 +1,28 @@
+<form [formGroup]="form" (ngSubmit)="update()">
+    <div>
+        <mat-card class="container">
+
+            <div class="container" style="width: 80%;">
+                <mat-form-field>
+                    <input matInput placeholder="ID" formControlName="id">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Username" formControlName="username">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" >
+                    <mat-label>Role</mat-label>
+                    <mat-select formControlName="role">
+                      <mat-option value="admin">admin</mat-option>
+                      <mat-option value="user">user</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </div>
+
+            <button mat-flat-button color="primary" [disabled]="!form.valid" type="submit">Update Profile</button>
+
+        </mat-card>
+    </div>
+</form>

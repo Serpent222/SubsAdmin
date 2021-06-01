@@ -1,0 +1,34 @@
+<form [formGroup]="usernameForm" (ngSubmit)="updateUsername()">
+    <div class="container">
+        <mat-card class="card">
+
+            <mat-form-field>
+                <input matInput placeholder="Username" formControlName="username">
+            </mat-form-field>
+        
+            <button mat-flat-button color="primary" [disabled]="!usernameForm.valid" type="submit">Update Username</button>
+
+        </mat-card>
+    </div>
+</form>
+<form [formGroup]="passwordForm" (ngSubmit)="updatePassword()">
+    <div class="container">
+        <mat-card class="card">
+
+            <mat-form-field>
+                <input matInput type="password" placeholder="Password" formControlName="password"> 
+                <mat-error *ngIf="passwordForm.get('password').hasError('required')">Password is required</mat-error>
+                <mat-error *ngIf="passwordForm.get('password').hasError('minlength')">Password must contain at least 8 characters</mat-error>
+                <mat-error *ngIf="passwordForm.get('password').hasError('invalidPassword')">Password must contain at least 1 number</mat-error>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <input matInput type="password" placeholder="Repeat password" formControlName="confirmPassword">
+                <mat-error *ngIf="passwordForm.hasError('passwordsNotMatching')">Password not matching</mat-error>
+            </mat-form-field>
+        
+            <button mat-flat-button color="primary" [disabled]="!passwordForm.valid" type="submit">Update Password</button>
+
+        </mat-card>
+    </div>
+</form>

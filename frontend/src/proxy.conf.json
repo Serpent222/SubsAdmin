@@ -1,0 +1,6 @@
+{
+    "/api": {
+        "target": "https://subsadmin-api.herokuapp.com/",
+        "secure": false
+    }
+}
