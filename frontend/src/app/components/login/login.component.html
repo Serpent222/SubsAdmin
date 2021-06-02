@@ -4,13 +4,11 @@
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         
             <mat-form-field>
-                <input matInput type="text" formControlName="username" apparience="fill">
-                <mat-hint *ngIf="loginForm.controls.username.errors">Username is required</mat-hint>
+                <input matInput type="text" placeholder="Username" formControlName="username" apparience="fill">
             </mat-form-field>
     
             <mat-form-field>
-                <input matInput type="password" formControlName="password">
-                <mat-hint *ngIf="loginForm.controls.password.errors">Password is required</mat-hint>
+                <input matInput type="password" placeholder="Password" formControlName="password">
             </mat-form-field>
     
             <br><br>
